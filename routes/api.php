@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/companies', 'CompaniesController@regist');
 Route::post('/jobs', 'JobsController@regist');
+Route::patch('/jobs', 'JobsController@update');

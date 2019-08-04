@@ -19,4 +19,14 @@ class JobsMysqlRepository implements JobsDataAccessRepositoryInterface
         $this->jobs->save();
         return $this->jobs;
     }
+
+    public function update($params) {
+        $find_jobs = $this->jobs::find($params['id']);
+        if(!is_null($find_jobs)) {
+            $find_jobs->fill($params)->save();
+            return $find_jobs;
+        } else {
+            return null;
+        }
+    }
 }
