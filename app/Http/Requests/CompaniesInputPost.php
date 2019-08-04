@@ -2,11 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Http\Exceptions\HttpResponseException;
+use App\Http\Requests\ApiRequester;
 
-class CompaniesInputPost extends FormRequest
+class CompaniesInputPost extends ApiRequester
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,13 +27,5 @@ class CompaniesInputPost extends FormRequest
             'name' => ['required'],
             'address' => ['required'],
         ];
-    }
-
-    protected function failedValidation( Validator $validator )
-    {
-        $response['errors']  = $validator->errors()->toArray();
-        throw new HttpResponseException(
-            response()->json( $response, 422 )
-        );
     }
 }
