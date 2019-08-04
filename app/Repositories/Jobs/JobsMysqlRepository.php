@@ -37,4 +37,21 @@ class JobsMysqlRepository implements JobsDataAccessRepositoryInterface
         }
         return $find_jobs;
     }
+
+    public function search(String $string, Array $omit_ids = null) {
+        $sql = $this->jobs
+            ->where(function ($query) use($string) {
+                $query->where('name', 'like', '%'.$string.'%')
+                    ->orWhere('category', 'like', '%'.$string.'%')
+                    ->orWhere('detail', 'like', '%'.$string.'%');
+            });
+        if(!is_null($omit_ids)) {
+            $sql->whereNotIn('id', $omit_ids);
+        }
+        $jobs = $sql->get();
+        foreach($jobs as $job) {
+            $job->company = $job->company;
+        }
+        return $jobs->toArray();
+    }
 }

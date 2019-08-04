@@ -21,3 +21,4 @@ Route::post('/companies', 'CompaniesController@regist');
 Route::post('/jobs', 'JobsController@regist');
 Route::patch('/jobs', 'JobsController@update');
 Route::get('/jobs', 'JobsController@show');
+Route::get('/jobs/search', 'JobsController@search');

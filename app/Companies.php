@@ -11,4 +11,8 @@ class Companies extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function jobs() {
+        return $this->hasMany('App\Jobs', 'company_id', 'id');
+    }
 }
