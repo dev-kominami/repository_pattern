@@ -21,7 +21,7 @@ class JobsController extends Controller
                 $request->detail,
                 $request->company_id
             );
-            return $response()->json($result, 201);
+            return response()->json($result, 201);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }
