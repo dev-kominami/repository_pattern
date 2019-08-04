@@ -17,6 +17,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Companies\CompaniesDataAccessRepositoryInterface::class,
             \App\Repositories\Companies\CompaniesMysqlRepository::class
         );
+        $this->app->bind(
+            \App\Repositories\Jobs\JobsDataAccessRepositoryInterface::class,
+            \App\Repositories\Jobs\JobsMysqlRepository::class
+        );
     }
 
     /**
