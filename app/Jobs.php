@@ -11,4 +11,12 @@ class Jobs extends Model
         'category',
         'detail'
     ];
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
+
+    public function company() {
+        return $this->hasOne('App\Companies', 'id', 'company_id');
+    }
 }

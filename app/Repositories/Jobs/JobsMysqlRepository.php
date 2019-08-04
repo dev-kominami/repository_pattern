@@ -29,4 +29,12 @@ class JobsMysqlRepository implements JobsDataAccessRepositoryInterface
             return null;
         }
     }
+
+    public function find(Int $id) {
+        $find_jobs = $this->jobs::find($id);
+        if(!is_null($find_jobs)) {
+            $find_jobs->company = $find_jobs->company;
+        }
+        return $find_jobs;
+    }
 }
