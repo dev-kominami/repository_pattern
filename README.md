@@ -1,1 +1,1 @@
-# internship-dev-kominami
+# リポジトリパターンの練習
